@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infozzle_task/configs/routes/route_name.dart';
-import 'package:infozzle_task/views/auth/login_screen.dart';
+import 'package:infozzle_task/views/login/login_screen.dart';
 import 'package:infozzle_task/views/views.dart';
 
 
