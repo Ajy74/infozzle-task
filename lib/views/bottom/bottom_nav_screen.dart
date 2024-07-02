@@ -41,6 +41,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
           });
         },
         selectedItemColor: AppColor.buttonColor,
+        backgroundColor: AppColor.whiteColor,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_rounded),

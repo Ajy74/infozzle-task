@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infozzle_task/configs/color/color.dart';
 import 'package:infozzle_task/configs/components/appbar_widget.dart';
+import 'package:infozzle_task/configs/components/drawer_widget.dart';
 import 'package:infozzle_task/configs/routes/route_name.dart';
 
 class CategoryScreen extends StatefulWidget {
@@ -26,10 +27,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
     final double size = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: AppColor.whiteColor,
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: AppBarWidget(),
       ),
+
+      drawer: const DrawerWidget(),
       
       body: Column(
         children: [

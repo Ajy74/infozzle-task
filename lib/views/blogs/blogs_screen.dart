@@ -12,6 +12,7 @@ class BlogsScreen extends StatelessWidget {
     final double size = MediaQuery.of(context).size.width;
     
     return Scaffold(
+      backgroundColor: AppColor.whiteColor,
       appBar: AppBar(
         scrolledUnderElevation: 0,
         automaticallyImplyLeading: false,

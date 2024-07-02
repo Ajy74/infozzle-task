@@ -13,6 +13,7 @@ class BlogScreen extends StatelessWidget {
     final double size = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: AppColor.whiteColor,
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: AppBarWidget(),

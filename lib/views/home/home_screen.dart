@@ -13,6 +13,7 @@ class HomeScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: AppColor.whiteColor,
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: AppBarWidget(),
