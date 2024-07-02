@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void navigate() async {
     await Future.delayed(const Duration(seconds: 2),() {
-      context.goNamed(RouteName.bottomNavScreen);
+      context.pushReplacementNamed(RouteName.bottomNavScreen);
     },);
   }
 
