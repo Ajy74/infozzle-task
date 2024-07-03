@@ -21,4 +21,11 @@ class AuthHttpApiRepository implements AuthApiRepository {
     // return UserModel.fromJson(response);
     return response;  
   }
+
+  @override
+  Future<dynamic> supportApi(dynamic data) async {
+    dynamic response = await _apiServices.postApi(AppUrl.contactEndPint, data);
+    // return UserModel.fromJson(response);
+    return response;  
+  }
 }
