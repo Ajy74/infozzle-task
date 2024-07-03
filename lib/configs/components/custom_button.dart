@@ -55,7 +55,7 @@ class CustomButton extends StatelessWidget {
               style: TextStyle(
                 color: textColor, 
                 letterSpacing: spacing,
-                fontSize: size*0.04
+                fontSize: size*0.06
               ), 
               overflow: TextOverflow.ellipsis,
             ),

@@ -11,4 +11,5 @@ class AppColor {
 
 
   static const Color buttonColor = Color(0xFF000000);
+  static const Color checkboxColor = Colors.blue;
 }

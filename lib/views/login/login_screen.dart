@@ -45,33 +45,57 @@ class _LoginScreenState extends State<LoginScreen> {
     final double size = MediaQuery.of(context).size.width;
 
     return Scaffold(
+        backgroundColor: AppColor.blackColor,
         body: Container(
-      margin: EdgeInsets.only(left: size * 0.02, right: size * 0.02),
-      child: Form(
-        key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
+        margin: EdgeInsets.only(left: size * 0.02, right: size * 0.02,top: MediaQuery.of(context).padding.top),
+        color: AppColor.whiteColor,
+        child: Form(
+          key: _formKey,
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: ListView(
+              children: <Widget>[
+              
+                Container(
+                width: size,
+                margin: EdgeInsets.only(top: size*0.2),
+                alignment: Alignment.center,
+                child: Text(
+                  "Login",
+                  style: TextStyle(
+                  color: AppColor.blackColor.withOpacity(.8),
+                  fontSize: size*0.07
+                  ),
+                ),
+                ),
 
-              titleContainer("Username / Email", size),
-              EmailInput(focusNode: _emailFocusNode),
-              // PasswordInput(focusNode: _passwordFocusNode),
-              // SubmitButton(
-              //   formKey: _formKey,
-              // ), // Widget for submit button
-            ],
+                SizedBox(height: size*0.06,),
+
+                titleContainer("Username / Email", size),
+                EmailInput(focusNode: _emailFocusNode),
+
+                titleContainer("Password", size),
+                PasswordInput(focusNode: _passwordFocusNode),
+
+                const RememberMe(),
+
+                SubmitButton(
+                  formKey: _formKey,
+                ), 
+                
+                SizedBox(height: size*0.09,),
+
+                dontHaveAccountContainer(size),
+              ],
+            ),
           ),
         ),
-      ),
-    ));
+      ));
   }
 
   titleContainer(String title, double size) {
     return Container(
-      margin: EdgeInsets.only(bottom: size * 0.03),
+      margin: EdgeInsets.only(bottom: size * 0.03,top: size*0.06),
       width: size,
       alignment: Alignment.centerLeft,
       child: Text(
@@ -79,10 +103,45 @@ class _LoginScreenState extends State<LoginScreen> {
         style: TextStyle(
           color: AppColor.blackColor, 
           fontSize: size * 0.036,
-          fontWeight: FontWeight.bold,
           fontFamily: ""
         ),
         textAlign: TextAlign.left,
+      ),
+    );
+  }
+  
+  dontHaveAccountContainer(double size) {
+    return Container(
+      width: size,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "Don't have an account?",
+            style: TextStyle(
+              color: AppColor.blackColor, 
+              fontSize: size * 0.036,
+              fontFamily: "",
+            ),
+          ),
+
+          SizedBox(width: size*0.01,),
+
+          InkWell(
+            onTap:(){
+              context.pushReplacementNamed(RouteName.registerScreen);
+            },
+            child: Text(
+              "Register here",
+              style: TextStyle(
+                color: AppColor.blackColor, 
+                fontSize: size * 0.036,
+                fontWeight: FontWeight.bold,
+                fontFamily: ""
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

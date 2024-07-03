@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infozzle_task/configs/routes/route_name.dart';
 import 'package:infozzle_task/views/login/login_screen.dart';
+import 'package:infozzle_task/views/register/register_screen.dart';
 import 'package:infozzle_task/views/views.dart';
 
 
@@ -12,7 +13,13 @@ class AppRoutes {
       GoRoute(
         path: "/",
         name: RouteName.loginScreen,
-        builder: (context, state) => const LoginScreen(),
+        pageBuilder: (context, state) {
+            return customPageRouteBuilder(
+             const LoginScreen(),
+            state.pageKey,
+            transitionDuration: const Duration(milliseconds: 500),
+          );
+        },
         routes: [
           // GoRoute(
           //   path: "404",
@@ -26,7 +33,7 @@ class AppRoutes {
             path: "register",
             pageBuilder: (context, state) {
                return customPageRouteBuilder(
-                const Placeholder(),
+                const RegisterScreen(),
                 state.pageKey,
                 transitionDuration: const Duration(milliseconds: 500),
               );
