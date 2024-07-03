@@ -19,17 +19,18 @@ class OtherPostSection extends StatelessWidget {
           return podContainer(
             "assets/images/post.png",
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-            size
+            size,
+            index+1 == 10
           );
         },
       ),
     );
   }
   
-  Widget podContainer(String image, String desciption, double size) {
+  Widget podContainer(String image, String desciption, double size, bool isLast) {
     return Container(
       width: size*0.5,
-      margin: EdgeInsets.only(left: size*0.03,right: size*0.01),
+      margin: EdgeInsets.only(left: size*0.03, right: isLast ? size*0.03 : 0),
       child:  Column(
         children: [
           SizedBox(
