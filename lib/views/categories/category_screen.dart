@@ -68,7 +68,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                       context.pushNamed(
                         RouteName.blogsScreen,
                         pathParameters: {
-                          "category": catTitle[index]
+                          "category": catTitle[index],
+                          "id": "-1"
                         },
                       );
                     },

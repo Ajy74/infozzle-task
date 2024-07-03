@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infozzle_task/bloc/drawer-cubit/drawer_cubit.dart';
 import 'package:infozzle_task/configs/color/color.dart';
+import 'package:infozzle_task/configs/routes/route_name.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -14,7 +15,7 @@ class DrawerWidget extends StatelessWidget {
     const double appBarHeight = kToolbarHeight;
 
     return BlocProvider(
-      create: (context) => DrawerCubit(),
+      create: (context) => DrawerCubit()..fetchDrawerItems(),
       child: Drawer(
         shape: const RoundedRectangleBorder(),
         backgroundColor: AppColor.whiteColor,
@@ -53,22 +54,37 @@ class DrawerWidget extends StatelessWidget {
               color: AppColor.blackColor.withOpacity(.1),
             ),
 
-            drawerListContainer("Travel", size),
-            drawerListContainer("Style", size),
-            drawerListContainer("Beauty", size),
-            drawerListContainer("Culture", size),
-            drawerListContainer("Citizen Enfants", size),
-            drawerListContainer("Watch", size),
-            drawerListContainer("Listen", size),
+
+            BlocBuilder<DrawerCubit, DrawerState>(
+              builder: (context, state) {
+                if (state is DrawerLoadingState) {
+                  return Padding(
+                    padding: EdgeInsets.only(top: size*0.03),
+                    child: const Center(child: CircularProgressIndicator(strokeWidth: 3,))
+                  );
+                } else if (state is DrawerLoadedState) {
+                  return Column(
+                    children: state
+                    .items
+                    .map((item) => drawerListContainer(item.name!, item.id!,context,size))
+                    .toList(),
+                  );
+                } else if (state is DrawerErrorState) {
+                  return const SizedBox();
+                } else {
+                  return const SizedBox.shrink();
+                }
+              },
+            ),
             
-            drawerListContainer("Support", size),
+            drawerListContainer("Support",-1,context, size),
           ],
         ),
       ),
     );
   }
 
-  drawerListContainer(String title, double size) {
+  Widget drawerListContainer(String title, int id, BuildContext context, double size) {
     return Column(
       children: [
         ListTile(
@@ -81,7 +97,20 @@ class DrawerWidget extends StatelessWidget {
             title,
             style: TextStyle(color: AppColor.blackColor, fontSize: size * 0.05),
           ),
-          onTap: () {},
+          onTap: () {
+            if(title != "Support"){
+              context.pushNamed(
+                RouteName.blogsScreen,
+                pathParameters: {
+                  "category": title,
+                  "id": id.toString(),
+                }, 
+              );
+            }
+            else{
+              context.pushNamed(RouteName.contactScreen);
+            }
+          },
         ),
         Container(
           height: size * 0.02,

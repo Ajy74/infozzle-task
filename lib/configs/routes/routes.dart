@@ -67,11 +67,12 @@ class AppRoutes {
 
           GoRoute(
             name: RouteName.blogsScreen,
-            path: "blogs/:category",
+            path: "blogs/:category/:id",
             pageBuilder: (context, state) {
                return customPageRouteBuilderBottomToTop(
                 BlogsScreen(
-                  title: state.pathParameters['category']!
+                  title: state.pathParameters['category']!,
+                  id: state.pathParameters['id']!
                 ),
                 state.pageKey,
                 transitionDuration: const Duration(milliseconds: 500),
@@ -81,11 +82,12 @@ class AppRoutes {
 
           GoRoute(
             name: RouteName.blogScreen,
-            path: "blog/:category",
+            path: "blog/:category/:id",
             pageBuilder: (context, state) {
                return customPageRouteBuilderBottomToTop(
                 BlogScreen(
-                  title: state.pathParameters['category']!
+                  title: state.pathParameters['category']!,
+                  id: state.pathParameters['id']!
                 ),
                 state.pageKey,
                 transitionDuration: const Duration(milliseconds: 500),
@@ -98,8 +100,8 @@ class AppRoutes {
             name: RouteName.contactScreen,
             path: "contact",
             pageBuilder: (context, state) {
-               return customPageRouteBuilderBottomToTop(
-                const Placeholder(),
+               return customPageRouteBuilder(
+                const SupportScreen(),
                 state.pageKey,
                 transitionDuration: const Duration(milliseconds: 500),
               );

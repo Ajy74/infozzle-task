@@ -5,7 +5,8 @@ import 'package:infozzle_task/configs/routes/route_name.dart';
 
 class BlogsScreen extends StatelessWidget {
   final String title;
-  const BlogsScreen({super.key, required this.title});
+  final String id;
+  const BlogsScreen({super.key, required this.title, required this.id});
 
   @override
   Widget build(BuildContext context) {

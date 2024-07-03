@@ -8,12 +8,12 @@ import 'package:infozzle_task/configs/routes/route_name.dart';
 import 'package:infozzle_task/utils/custom_snackbar.dart';
 
 class SubmitButton extends StatelessWidget {
-  final formKey;
+  final dynamic formKey;
   const SubmitButton({super.key, required this.formKey});
 
   @override
   Widget build(BuildContext context) {
-    final double size = MediaQuery.of(context).size.width;
+    // final double size = MediaQuery.of(context).size.width;
 
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {

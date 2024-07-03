@@ -6,7 +6,8 @@ import 'package:infozzle_task/views/blogs/widget/blog_widget.dart';
 
 class BlogScreen extends StatelessWidget {
   final String title;
-  const BlogScreen({super.key, required this.title});
+  final String id;
+  const BlogScreen({super.key, required this.title, required this.id});
 
   @override
   Widget build(BuildContext context) {

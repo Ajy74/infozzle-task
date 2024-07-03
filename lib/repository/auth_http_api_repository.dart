@@ -1,3 +1,4 @@
+import 'package:infozzle_task/configs/models/category_model.dart';
 import 'package:infozzle_task/utils/app_url.dart';
 
 import '../../data/network/base_api_services.dart';
@@ -11,15 +12,20 @@ class AuthHttpApiRepository implements AuthApiRepository {
   @override
   Future<dynamic> loginApi(dynamic data) async {
     dynamic response = await _apiServices.postApi(AppUrl.loginEndPint, data);
-    // return UserModel.fromJson(response);
     return response;
   }
 
   @override
   Future<dynamic> registerApi(dynamic data) async {
     dynamic response = await _apiServices.postApi(AppUrl.registerEndPint, data);
-    // return UserModel.fromJson(response);
     return response;  
+  }
+
+  @override
+  Future<dynamic> categoryApi() async {
+    dynamic response = await _apiServices.getApi(AppUrl.categoryEndPint);
+    final List<CategoryModel> items = (response as List).map((item) => CategoryModel.fromJson(item)).toList();
+    return items;  
   }
 
   @override
