@@ -51,7 +51,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final double size = MediaQuery.of(context).size.width;
 
     return Scaffold(
-        backgroundColor: AppColor.blackColor,
+        backgroundColor: AppColor.whiteColor,
         body: BlocProvider(
           create: (context) => _registerCubit,
           child: Container(

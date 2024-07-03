@@ -22,7 +22,7 @@ class SubmitButton extends StatelessWidget {
         }
         if(state is LoginSuccessState){
           customSnackBar(context, state.message, Colors.green);
-          context.pushReplacementNamed(RouteName.bottomNavScreen);
+          context.pushReplacementNamed(RouteName.homeScreen);
         }
       },
       builder: (context, state) {
