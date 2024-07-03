@@ -59,7 +59,7 @@ class _SupportScreenState extends State<SupportScreen> {
                   children: <Widget>[
                     Container(
                       width: size,
-                      margin: EdgeInsets.only(top: size * 0.2),
+                      margin: EdgeInsets.only(top: size * 0.17),
                       alignment: Alignment.center,
                       child: Text(
                         "Contact Us",

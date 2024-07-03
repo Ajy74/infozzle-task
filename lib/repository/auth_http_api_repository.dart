@@ -1,3 +1,4 @@
+import 'package:infozzle_task/configs/models/all_post_model.dart';
 import 'package:infozzle_task/configs/models/category_model.dart';
 import 'package:infozzle_task/utils/app_url.dart';
 
@@ -26,6 +27,14 @@ class AuthHttpApiRepository implements AuthApiRepository {
     dynamic response = await _apiServices.getApi(AppUrl.categoryEndPint);
     final List<CategoryModel> items = (response as List).map((item) => CategoryModel.fromJson(item)).toList();
     return items;  
+  }
+
+
+  @override
+  Future<dynamic> allPostsApi(int catid) async {
+    dynamic response = await _apiServices.getApi("${AppUrl.postEndPint}/?category_id=$catid");
+    final List<AllPostModel> posts = (response as List).map((item) => AllPostModel.fromJson(item)).toList();
+    return posts;  
   }
 
   @override

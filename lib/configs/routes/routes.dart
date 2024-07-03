@@ -58,7 +58,7 @@ class AppRoutes {
             path: "home",
             pageBuilder: (context, state) {
                return customPageRouteBuilder(
-                const Placeholder(),
+                const HomeScreen(),
                 state.pageKey,
                 transitionDuration: const Duration(milliseconds: 500),
               );
@@ -82,11 +82,11 @@ class AppRoutes {
 
           GoRoute(
             name: RouteName.blogScreen,
-            path: "blog/:category/:id",
+            path: "blog/:image/:id",
             pageBuilder: (context, state) {
-               return customPageRouteBuilderBottomToTop(
+               return customPageRouteBuilder(
                 BlogScreen(
-                  title: state.pathParameters['category']!,
+                  image: state.pathParameters['image']!,
                   id: state.pathParameters['id']!
                 ),
                 state.pageKey,

@@ -14,7 +14,7 @@ class AuthServices {
       if (SessionController.isLogin ?? false) {
         Timer(
           const Duration(seconds: 0),
-          () => context.pushReplacementNamed(RouteName.bottomNavScreen),
+          () => context.pushReplacementNamed(RouteName.homeScreen),
         );
       } else {
         // Timer(

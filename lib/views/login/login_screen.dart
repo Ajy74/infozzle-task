@@ -117,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   dontHaveAccountContainer(double size) {
-    return Container(
+    return SizedBox(
       width: size,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

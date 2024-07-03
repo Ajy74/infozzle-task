@@ -5,9 +5,9 @@ import 'package:infozzle_task/configs/components/drawer_widget.dart';
 import 'package:infozzle_task/views/blogs/widget/blog_widget.dart';
 
 class BlogScreen extends StatelessWidget {
-  final String title;
+  final String image;
   final String id;
-  const BlogScreen({super.key, required this.title, required this.id});
+  const BlogScreen({super.key, required this.image, required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +25,7 @@ class BlogScreen extends StatelessWidget {
       body: ListView(
         children: [
           BlogTopSection(
-            image: "assets/images/post.png", 
-            caption: "Lorem Ipsum is simply dummy text of the printing and typesetting industry", 
-            title: title
+            image: image, 
           ),
 
           const AuthorSection(),

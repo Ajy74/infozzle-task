@@ -98,6 +98,8 @@ class DrawerWidget extends StatelessWidget {
             style: TextStyle(color: AppColor.blackColor, fontSize: size * 0.05),
           ),
           onTap: () {
+            Scaffold.of(context).closeDrawer();
+            
             if(title != "Support"){
               context.pushNamed(
                 RouteName.blogsScreen,
