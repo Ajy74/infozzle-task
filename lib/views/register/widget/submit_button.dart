@@ -1,26 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:infozzle_task/bloc/register-cubit/register_cubit.dart';
 import 'package:infozzle_task/configs/color/color.dart';
 import 'package:infozzle_task/configs/components/custom_button.dart';
+import 'package:infozzle_task/utils/custom_snackbar.dart';
 
 class SubmitButton extends StatelessWidget {
-  final formKey;
+  final dynamic formKey;
   const SubmitButton({super.key, required this.formKey});
 
   @override
   Widget build(BuildContext context) {
-    final double size = MediaQuery.of(context).size.width;
+    // final double size = MediaQuery.of(context).size.width;
 
-    return CustomButton(
+    return BlocConsumer<RegisterCubit, RegisterState>(
+      listener: (context, state) {
+        if(state is RegisteErrorState){
+          customSnackBar(context, state.message, AppColor.redColor);
+        }
+        if(state is RegisteSuccessState){
+
+        }
+      },
+      builder: (context, state) {
+        return CustomButton(
         title: "Register",
         buttonColor: AppColor.blackColor,
         textColor: AppColor.whiteColor,
         radius: 0,
-        loading: false,
+        loading: state is RegisterProcessingState,
         onPress: () {
           if (formKey.currentState.validate()) {
-            // context.read<LoginBloc>().add(LoginApi());
+            context.read<RegisterCubit>().submitRegisterForm();
           }
-        }
+        });
+      },
     );
   }
 }
