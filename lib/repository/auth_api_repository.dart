@@ -5,6 +5,7 @@ abstract class AuthApiRepository {
 
   Future<dynamic> categoryApi();
   Future<dynamic> allPostsApi(int catid);
+  Future<dynamic> singlePostsApi(int postid);
 
   Future<dynamic> supportApi(dynamic data);
 }

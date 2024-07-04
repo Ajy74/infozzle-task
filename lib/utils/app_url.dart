@@ -7,5 +7,6 @@ class AppUrl {
 
   static var categoryEndPint =  '$baseUrl/categories' ;
   static var postEndPint =  '$baseUrl/posts' ; //?category_id=199
+  static var sinlePostEndPint =  '$baseUrl/post' ; 
   
 }

@@ -36,18 +36,18 @@ class BlogsScreen extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: size * 0.06),
-              width: size,
-              alignment: Alignment.center,
-              child: Text(
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                style: TextStyle(color: AppColor.blackColor, fontSize: size * 0.036),
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-              ),
-            ),
+            // Container(
+            //   margin: EdgeInsets.symmetric(horizontal: size * 0.06),
+            //   width: size,
+            //   alignment: Alignment.center,
+            //   child: Text(
+            //     "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+            //     style: TextStyle(color: AppColor.blackColor, fontSize: size * 0.036),
+            //     maxLines: 3,
+            //     overflow: TextOverflow.ellipsis,
+            //     textAlign: TextAlign.center,
+            //   ),
+            // ),
             
             SizedBox(
               height: size * 0.03,
@@ -69,7 +69,7 @@ class BlogsScreen extends StatelessWidget {
                               RouteName.blogScreen,
                               pathParameters: {
                                 "image": post.featuredImage!, 
-                                "id": "-1",
+                                "id": post.id!.toString(),
                               },
                             );
                           },

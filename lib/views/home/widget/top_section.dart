@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:infozzle_task/configs/color/color.dart';
+import 'package:infozzle_task/configs/routes/route_name.dart';
 
 class TopSection extends StatelessWidget {
   const TopSection({super.key});
@@ -18,7 +20,13 @@ class TopSection extends StatelessWidget {
                 Expanded(
                   child: InkWell(
                     onTap: () {
-                      
+                      context.pushNamed(
+                        RouteName.blogsScreen,
+                        pathParameters: {
+                          "category": "Travel",
+                          "id": "11",
+                        }, 
+                      );
                     },
                     child:  catContainer("assets/images/travel.png","Travel",size),
                   )
@@ -27,7 +35,13 @@ class TopSection extends StatelessWidget {
                 Expanded(
                   child: InkWell(
                     onTap: () {
-                      
+                      context.pushNamed(
+                        RouteName.blogsScreen,
+                        pathParameters: {
+                          "category": "Style",
+                          "id": "156",
+                        }, 
+                      );
                     },
                     child: catContainer("assets/images/style.png","Style",size),
                   )
@@ -42,7 +56,13 @@ class TopSection extends StatelessWidget {
                 Expanded(
                   child: InkWell(
                     onTap: () {
-                      
+                      context.pushNamed(
+                        RouteName.blogsScreen,
+                        pathParameters: {
+                          "category": "Beauty",
+                          "id": "158",
+                        }, 
+                      );
                     },
                     child:  catContainer("assets/images/beauty.png","Beauty",size),
                   )
@@ -51,7 +71,13 @@ class TopSection extends StatelessWidget {
                 Expanded(
                   child: InkWell(
                     onTap: () {
-                      
+                      context.pushNamed(
+                        RouteName.blogsScreen,
+                        pathParameters: {
+                          "category": "Culture",
+                          "id": "23",
+                        }, 
+                      );
                     },
                     child:  catContainer("assets/images/culture.png","Culture",size),
                   )

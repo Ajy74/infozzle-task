@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:infozzle_task/bloc/single-post/post_cubit.dart';
 import 'package:infozzle_task/configs/color/color.dart';
 
 class AuthorSection extends StatelessWidget {
@@ -9,16 +11,15 @@ class AuthorSection extends StatelessWidget {
     final double size = MediaQuery.of(context).size.width;
 
     return Container(
-      height: size*0.17,
+      height: size * 0.17,
       width: size,
-      margin: EdgeInsets.symmetric(horizontal: size*0.03),
+      margin: EdgeInsets.symmetric(horizontal: size * 0.03),
       child: Column(
         children: [
           Container(
             height: 1,
             color: AppColor.blackColor.withOpacity(.1),
           ),
-
           Expanded(
             child: Row(
               children: [
@@ -37,46 +38,56 @@ class AuthorSection extends StatelessWidget {
                 ),
                 SizedBox(
                   width: size * 0.45,
-                  child: Text(
-                    "By: Gemma Deeks",
-                    style: TextStyle(
-                        fontSize: size * 0.036,
-                        fontWeight: FontWeight.bold,
-                        color: AppColor.blackColor.withOpacity(0.8)),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.start,
-                  ),
-                ),
-
-                Container(
-                  width: 1,
-                  height: size*0.09,
-                  color: AppColor.blackColor,
-                ),
-
-                Expanded(
-                  child: Center(
-                    child: Text(
-                     "Jun, 2024",
-                     style: TextStyle(
-                        fontSize: size * 0.036,
-                        color: AppColor.blackColor.withOpacity(0.8)),
+                  child: BlocBuilder<PostCubit, PostState>(
+                    builder: (context, state) {
+                      String? autherName = "...";
+                      if (state is PostLoadedState) {
+                        autherName = state.post.authorName!;
+                      }
+                      return Text(
+                        "By: $autherName",
+                        style: TextStyle(
+                            fontSize: size * 0.036,
+                            fontWeight: FontWeight.bold,
+                            color: AppColor.blackColor.withOpacity(0.8)),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.start,
-                    )
-                  )
+                      );
+                    },
+                  ),
                 ),
+                Container(
+                  width: 1,
+                  height: size * 0.09,
+                  color: AppColor.blackColor,
+                ),
+                Expanded(
+                    child: Center(child: BlocBuilder<PostCubit, PostState>(
+                    builder: (context, state) {
+                       String? date = "...";
+                        if (state is PostLoadedState) {
+                          date = state.post.createdDate!;
+                        }
+                      return Text(
+                        date,
+                        style: TextStyle(
+                            fontSize: size * 0.036,
+                            color: AppColor.blackColor.withOpacity(0.8)),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.start,
+                      );
+                    },
+                ))),
               ],
             ),
           ),
-
           Container(
             height: 1,
             color: AppColor.blackColor.withOpacity(.1),
           ),
-        ], 
+        ],
       ),
     );
   }
