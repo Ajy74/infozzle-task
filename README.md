@@ -1,10 +1,10 @@
 # infozzle_task
 
-A new Flutter project.
+A new Flutter project as an assignment of Infozzle Software Solutions PVT.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is created using clean coding industry standard and bloc is used as state management with http for handle apis.
 
 A few resources to get you started if this is your first Flutter project:
 
