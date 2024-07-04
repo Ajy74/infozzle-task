@@ -53,7 +53,7 @@ class BlogScreen extends StatelessWidget {
                       textAlign: TextAlign.left,
                     );
                   }
-                  return const SizedBox();
+                  return const Center(child: CircularProgressIndicator(color: AppColor.blackColor,),);
                 },
               ),
             ),
@@ -80,18 +80,18 @@ class BlogScreen extends StatelessWidget {
             SizedBox(
               height: size * 0.03,
             ),
-            Container(
-              width: size,
-              alignment: Alignment.center,
-              child: Text(
-                "You may also like",
-                style: TextStyle(
-                    color: AppColor.blackColor.withOpacity(.8),
-                    fontWeight: FontWeight.bold,
-                    fontSize: size * 0.07),
-              ),
-            ),
-            const OtherPostSection(),
+            // Container(
+            //   width: size,
+            //   alignment: Alignment.center,
+            //   child: Text(
+            //     "You may also like",
+            //     style: TextStyle(
+            //         color: AppColor.blackColor.withOpacity(.8),
+            //         fontWeight: FontWeight.bold,
+            //         fontSize: size * 0.07),
+            //   ),
+            // ),
+            // const OtherPostSection(),
           ],
         ),
       ),
