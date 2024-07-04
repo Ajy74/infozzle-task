@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:infozzle_task/bloc/single-post/post_cubit.dart';
 import 'package:infozzle_task/configs/color/color.dart';
 import 'package:infozzle_task/configs/components/appbar_widget.dart';
 import 'package:infozzle_task/configs/components/drawer_widget.dart';
+import 'package:infozzle_task/utils/url_launcher.dart';
 import 'package:infozzle_task/views/blogs/widget/blog_widget.dart';
 
 class BlogScreen extends StatelessWidget {
@@ -46,17 +48,29 @@ class BlogScreen extends StatelessWidget {
                     return const Center(child: CircularProgressIndicator(color: AppColor.blackColor,),);
                   }
                   if(state is PostLoadedState){
-                    return Text(
+                    // return Text(
+                    //   state.post.title!,
+                    //   style: TextStyle(
+                    //       color: AppColor.blackColor, 
+                    //       fontSize: size * 0.036,
+                    //       fontWeight: FontWeight.bold
+                    //   ),
+                    //   textAlign: TextAlign.left,
+                    // );
+                    return HtmlWidget(
                       state.post.title!,
-                      style: TextStyle(
-                          color: AppColor.blackColor, fontSize: size * 0.036),
-                      textAlign: TextAlign.left,
+                      textStyle: TextStyle(
+                        color: AppColor.blackColor,
+                        fontSize: size * 0.06,
+                        fontWeight: FontWeight.bold
+                      ),
                     );
                   }
                   return const Center(child: CircularProgressIndicator(color: AppColor.blackColor,),);
                 },
               ),
             ),
+            
             Container(
               margin: EdgeInsets.symmetric(
                   vertical: size * 0.04, horizontal: size * 0.03),
@@ -65,11 +79,22 @@ class BlogScreen extends StatelessWidget {
               child: BlocBuilder<PostCubit, PostState>(
                 builder: (context, state) {
                   if(state is PostLoadedState){
-                    return Text(
+                    // return Text(
+                    //   state.post.content!,
+                    //   style: TextStyle(
+                    //       color: AppColor.blackColor, fontSize: size * 0.036),
+                    //   textAlign: TextAlign.left,
+                    // );
+                    return HtmlWidget(
                       state.post.content!,
-                      style: TextStyle(
-                          color: AppColor.blackColor, fontSize: size * 0.036),
-                      textAlign: TextAlign.left,
+                      onTapUrl: (url) async{
+                        await checkUrl(url , context);
+                        return true;
+                      },
+                      enableCaching: true,
+                      onLoadingBuilder: (context, element, loadingProgress) {
+                        return const Center(child: CircularProgressIndicator(color: AppColor.blackColor,),);
+                      },
                     );
                   }
                   return const SizedBox();
@@ -80,6 +105,8 @@ class BlogScreen extends StatelessWidget {
             SizedBox(
               height: size * 0.03,
             ),
+
+
             // Container(
             //   width: size,
             //   alignment: Alignment.center,
