@@ -62,24 +62,29 @@ class AuthorSection extends StatelessWidget {
                   height: size * 0.09,
                   color: AppColor.blackColor,
                 ),
-                Expanded(
-                    child: Center(child: BlocBuilder<PostCubit, PostState>(
-                    builder: (context, state) {
-                       String? date = "...";
-                        if (state is PostLoadedState) {
-                          date = state.post.createdDate!;
-                        }
-                      return Text(
-                        date,
-                        style: TextStyle(
-                            fontSize: size * 0.036,
-                            color: AppColor.blackColor.withOpacity(0.8)),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.start,
-                      );
-                    },
-                ))),
+                Expanded( 
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: size*0.01),
+                    alignment: Alignment.center,
+                    child: BlocBuilder<PostCubit, PostState>(
+                      builder: (context, state) {
+                        String? date = "...";
+                          if (state is PostLoadedState) {
+                            date = state.post.createdDate!;
+                          }
+                        return Text(
+                          date,
+                          style: TextStyle(
+                              fontSize: size * 0.036,
+                              color: AppColor.blackColor.withOpacity(0.8)),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.start,
+                        );
+                      },
+                    )
+                  )
+                ),
               ],
             ),
           ),
